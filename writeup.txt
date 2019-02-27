@@ -1,0 +1,18 @@
+- Blind Search Algorithm used for the Knight's Tour Problem
+	- There are many kinds of Blind Search Algorithms or Uninformed Algorithms. Such algorithms are the Depth-First Search (DFS) Algorithm, Breadth-First Search (BFS) Algorithm, Uniform Cost Search (UC), Depth-Limited Search (DL), Iterative Deepening (ID) Search and Bi-directional (BD) Search. For the Knight's Tour Puzzle/Problem, the Depth-First Search is implemented since it is the kind of blind search algorithm that best fits to be able to solve the Knight's Tour Puzzle efficiently even though all of the Uninformed Algorithms will be able to solve the Knight's Tour problem. Compared to the breadth-first approach, the Depth-First approach will be faster in getting a solution since it will go straight into checking a path rather than going through all of the other possible paths. This reason also applies to the Depth-Limited Search and Iterative Deepening Search since there have the same approach like that of a breadth-first search. Now for the Bi-directional Search, the program would be much more complicated to do since it needs to consider the end point of the path--which is not known. But for solving a closed toured Knight's Tour problem, it would be much more useful since the 64th step of the Knight could be easier to predict. So with all the reasons stated above, the Depth-First Search Algorithm is implemented in the problem so that the Knight's Tour puzzle could be solved.
+
+- Data Structure
+	struct node{
+		int row,col; //row and column
+		int visited; //0 - unvisited | >= 1 - visited/knight jump
+		struct node *neighbors[8]; //the 8 possible tiles the knight can jump to
+		struct node *templink; //a linear link just for conveniece of accessing all the tiles
+	};
+
+- Pseudocode for the Depth First Backtracking Algorithm implemented on the Knight's Tour
+	Pseudocode
+		1. Put Knight in first tile
+		2. Do until the knight has 64 jumps
+			2.1. Do until there is no more tile to step on
+				2.1.1. Jump to the next unvisited tile
+			2.2. Go back and try the next neighbor
